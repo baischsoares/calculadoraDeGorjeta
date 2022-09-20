@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css
+  ">
+  <title>Calculadora de gorjeta</title>
+
+
+</head>
+
+<body>
+
+  <section id="section" class="">
+    <div id="opcoesSection">
+      <label for="valorConta">Valor da conta</label>
+      <input type="number" id="valorConta">
+      <span>Porcentagem da gorjeta</span>
+      <ul class="lista-porcentagem">
+        <li><button class="porcentualBtn ativo" value="105">5%</button></li>
+        <li><button class="porcentualBtn">10%</button></li>
+        <li><button class="porcentualBtn">15%</button></li>
+        <li><button class="porcentualBtn">25%</button></li>
+        <li><button class="porcentualBtn">50%</button></li>
+        <li><button class="porcentualBtn">75%</button></li>
+      </ul>
+      <label for="pessoas">nº de pessoas</label>
+      <input type="text" id="pessoas">
+      <span class="erro">Não pode ser 0</span>
+    </div>
+    <div id="resultadoSection">
+      <div class="resultado">
+        <div class="resultado-item">
+          <span class="titulo-resultado">Gorjeta /<br> pessoa</span> <span class="resultadoGorjeta">$0.00</span>
+        </div>
+        <div class="resultado-item">
+          <span class="titulo-resultado">Total /<br> pessoa</span> <span class="resultadoTotal">$0.00</span>
+        </div>
+      </div>
+      <button class="resetar">Resetar</button>
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
