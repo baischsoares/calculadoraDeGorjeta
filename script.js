@@ -36,19 +36,16 @@ botaoResetar.addEventListener('click', resetar);
 
 }
 
-function erro(){
+function erro(event){
   let pessoas = +qtdePessoas.value
 
   const span = document.createElement('span')
   span.classList.add('erro')
   span.innerText = 'Não pode ser 0'
-
-  if(pessoas == 0){
+  
+  if(event.key === '0' && pessoas === 0){
     qtdePessoas.insertAdjacentElement('afterEnd', span)
-  } else{
-    let erro = document.querySelector('.erro')
-    erro.remove()
-  }
+  } 
 }
 
 function addClass(){
@@ -60,7 +57,6 @@ function addClass(){
 botaoPorcentagem.forEach((botao) => {
   botao.addEventListener('click', addClass);
   botao.addEventListener('click', calcularConta);
-
 })
 
 function resetar(){
