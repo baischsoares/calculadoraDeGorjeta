@@ -4,25 +4,31 @@ const valorGorjeta = document.querySelector('.resultadoGorjeta')
 
 const resultadoGorjeta = document.querySelector('.resultadoGorjeta')
 const resultadoTotal = document.querySelector('.resultadoTotal')
+const botaoResetar = document.querySelector('.resetar');
+const botaoPorcentagem = document.querySelectorAll('.porcentualBtn');
 
-function calcularConta(){
+
+valorConta.addEventListener('input', calcularConta)
+qtdePessoas.addEventListener('input', calcularConta)
+qtdePessoas.addEventListener("keyup", erro)
+
+botaoResetar.addEventListener('click', resetar);
+
+
+ function calcularConta(){
   let conta = +valorConta.value
   let pessoas = +qtdePessoas.value
   let porcentagem = document.querySelector('.ativo')
   let valorPorcentagem = +porcentagem.innerHTML.replace('%', '') / 100
-  
+ 
   let valorPessoa = [conta + (conta * valorPorcentagem)]/ pessoas
   let gorjetaPessoa = (conta * valorPorcentagem) / pessoas
 
-  if(pessoas === 0){
-    ativarErro()
-  }
-
-
-  if(conta && porcentagem){
+  
+  if(conta && porcentagem && pessoas){
     valorPessoa = valorPessoa.toFixed(2);
     gorjetaPessoa = gorjetaPessoa.toFixed(2);
-  
+ 
     resultadoGorjeta.innerText = 'R$ '+ gorjetaPessoa.replace('.', ',');
     resultadoTotal.innerText = 'R$ ' + valorPessoa.replace('.', ',');
   }
@@ -30,18 +36,21 @@ function calcularConta(){
 
 }
 
-valorConta.addEventListener('input', calcularConta)
-qtdePessoas.addEventListener('input', calcularConta)
+function erro(){
+  let pessoas = +qtdePessoas.value
 
+  const span = document.createElement('span')
+  span.classList.add('erro')
+  span.innerText = 'Não pode ser 0'
 
-function ativarErro(){
-  const erro = document.querySelector('.erro')
-  console.log(erro)
+  if(pessoas == 0){
+    qtdePessoas.insertAdjacentElement('afterEnd', span)
+  } else{
+    let erro = document.querySelector('.erro')
+    erro.remove()
+  }
 }
 
-
-
-const botaoPorcentagem = document.querySelectorAll('.porcentualBtn');
 function addClass(){
   botaoPorcentagem.forEach((botao) => {
     botao.classList.remove('ativo');
@@ -50,13 +59,13 @@ function addClass(){
 }
 botaoPorcentagem.forEach((botao) => {
   botao.addEventListener('click', addClass);
+  botao.addEventListener('click', calcularConta);
+
 })
 
-const botaoResetar = document.querySelector('.resetar');
-botaoResetar.addEventListener('click', resetar);
 function resetar(){
-  resultadoGorjeta.innerText = 'R$ 0.00'
-  resultadoTotal.innerText = 'R$ 0.00' 
-  valorConta.value = ''
-  qtdePessoas.value = ''
+  resultadoGorjeta.innerText = 'R$ 0.00';
+  resultadoTotal.innerText = 'R$ 0.00' ;
+  valorConta.value = '';
+  qtdePessoas.value = '';
 }
